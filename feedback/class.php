@@ -170,7 +170,7 @@ class FpFeedback extends \CBitrixComponent implements Controllerable
      */
     private function getFormatedFilesArray(): array
     {
-        $allFiles = $this->request->getFileList()?->toArray();
+        $allFiles = $this->request->getFileList()->toArray();
         $fileList = [];
         if ($allFiles) {
             foreach ($allFiles as $code => $filesData) {
@@ -217,7 +217,7 @@ class FpFeedback extends \CBitrixComponent implements Controllerable
             $this->arResult['USER'] = UserTable::getList([
                 'select' => ['*', 'UF_*'],
                 'filter' => ['ID' => $USER->GetID()]
-            ])?->fetch();
+            ])->fetch();
         }
     }
 
