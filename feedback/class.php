@@ -44,7 +44,7 @@ class FpFeedback extends \CBitrixComponent implements Controllerable
      */
     public function setError(string $error, string $code): void
     {
-        $this->errors[$code] = $error;
+        $this->errors[$code][] = $error;
     }
 
     /**
