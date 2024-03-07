@@ -213,12 +213,22 @@ class FpFeedback extends \CBitrixComponent implements Controllerable
         if ($this->arParams["USE_CAPTCHA"] == "Y") {
             $this->arResult['capCode'] = htmlspecialcharsbx($APPLICATION->CaptchaGetCode());
         }
+
         if ($USER->IsAuthorized()) {
             $this->arResult['USER'] = UserTable::getList([
                 'select' => ['*', 'UF_*'],
                 'filter' => ['ID' => $USER->GetID()]
             ])->fetch();
         }
+
+        $uniqueId = uniqid();
+        $this->arResult['JS_DATA'] = [
+            'uniqueId'=>$uniqueId,
+            'signedParams' => $this->getSignedParameters(),
+            'formId' => "pf_feedback_form_$uniqueId",
+            'buttonId' => "pf_feedback_button_$uniqueId",
+            'componentName'=>$this->getName(),
+        ];
     }
 
     /**

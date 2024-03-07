@@ -15,15 +15,8 @@ use Bitrix\Main\Web\Json;
  * @global CUser $USER
  */
 
-$uniqueId = rand();
-$jsObj = [
-    'signedParams' => $this->getComponent()->getSignedParameters(),
-    'formId' => "pf_feedback_form_$uniqueId",
-    'buttonId' => "pf_feedback_button_$uniqueId",
-    'componentName'=>$this->getComponent()->getName(),
-];
 ?>
-<form action="" id="<?= $jsObj['formId'] ?>">
+<form action="" id="<?= $arResult['JS_DATA']['formId'] ?>">
     <input type="text" name="NAME">
     <textarea name="PREVIEW_TEXT" cols="30" rows="10"></textarea>
     <input type="file" multiple name="FILES[]">
@@ -37,8 +30,8 @@ $jsObj = [
             <input type="text" name="captcha_word" size="30" maxlength="50" value="">
         </div>
     <?endif;?>
-    <button type="button" id="<?= $jsObj['buttonId'] ?>">Submit</button>
+    <button type="button" id="<?= $arResult['JS_DATA']['buttonId'] ?>">Submit</button>
 </form>
 <script type="text/javascript">
-    const pf_feedback_signed_<?=$uniqueId?> = new FpFeedback(<?=Json::encode($jsObj)?>);
+    const pf_feedback_signed_<?=$arResult['JS_DATA']['uniqueId']?> = new FpFeedback(<?=Json::encode($arResult['JS_DATA'])?>);
 </script>
