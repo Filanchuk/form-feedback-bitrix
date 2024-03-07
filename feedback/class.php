@@ -223,11 +223,11 @@ class FpFeedback extends \CBitrixComponent implements Controllerable
 
         $uniqueId = uniqid();
         $this->arResult['JS_DATA'] = [
-            'uniqueId'=>$uniqueId,
+            'uniqueId' => $uniqueId,
             'signedParams' => $this->getSignedParameters(),
             'formId' => "pf_feedback_form_$uniqueId",
             'buttonId' => "pf_feedback_button_$uniqueId",
-            'componentName'=>$this->getName(),
+            'componentName' => $this->getName(),
         ];
     }
 
